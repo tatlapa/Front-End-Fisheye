@@ -10,13 +10,17 @@ function photographerTemplate(data) {
     const h3 = document.createElement("h3");
     const h4 = document.createElement("h4");
     const p = document.createElement("p");
-    const link = document.createElement("a");
 
     img.setAttribute("src", picture);
+    img.setAttribute("alt", "Image du photographe");
     h2.textContent = name;
+    h2.setAttribute("aria-label", "Nom du photographe");
     h3.textContent = `${city}, ${country}`;
+    h3.setAttribute("aria-label", "Ville et pays du photographe");
     h4.textContent = tagline;
+    h4.setAttribute("aria-label", "Description du photographe");
     p.textContent = price + "€/jour";
+    p.setAttribute("aria-label", "Prix du photographe");
 
     article.appendChild(img);
     article.appendChild(h2);
