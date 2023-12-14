@@ -36,6 +36,11 @@ h1 {
     
 }
 
+.photographer_section a {
+   cursor: pointer; 
+   text-align: center;
+}
+
 .photographer_section article {
     justify-self: center;
     display: flex;
@@ -50,18 +55,19 @@ h1 {
     font-weight: 400;
 }
 
-.photographer_section article h3 {
+
+.photographer_section article .location {
     color: #901C1C;
     font-size: 13px;
     font-weight: 400;
 }
 
-.photographer_section article h4 {
+.photographer_section article .description {
     font-size: 10px;
     font-weight: 400;
 }
 
-.photographer_section article p {
+.photographer_section article span {
     color: #757575;
     font-size: 9px;
     font-weight: 400;
