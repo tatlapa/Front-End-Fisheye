@@ -6,6 +6,20 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.photograp-header .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.photograp-header .container img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .contact_button {

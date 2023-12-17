@@ -1,25 +1,21 @@
-//fonction pour récupérer les data du json et vérifier les erreurs
-async function getPhotographers() {
-  const photographer = await fetch("../../data/photographers.json")
-    // promesse => réponse
-    .then((data) => data.json());
-  return photographer;
-}
+import Api from "../api/api.js";
+import Photographer from "../models/Photographer.js";
+import PhotographerCard from "../templates/index-photographer.js";
 
-async function displayData(photographers) {
-  const photographersSection = document.querySelector(".photographer_section");
+const photographersApi = new Api("./data/photographers.json");
+const photographersSection = document.querySelector(".photographer_section");
 
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    photographersSection.appendChild(userCardDOM);
-  });
-}
+const displayPhotographers = async () => {
+  const photographersData = await photographersApi.get();
+  const photographers = photographersData.photographers;
 
-async function init() {
-  // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
-}
+  photographers
+    .map((photographer) => new Photographer(photographer))
+    .forEach((photographer) => {
+      const template = new PhotographerCard(photographer);
+      const photographerCard = template.createPhotographerCard();
+      photographersSection.appendChild(photographerCard);
+    });
+};
 
-init();
+displayPhotographers();

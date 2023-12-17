@@ -39,6 +39,7 @@ h1 {
 .photographer_section a {
    cursor: pointer; 
    text-align: center;
+   text-decoration: none;
 }
 
 .photographer_section article {
@@ -62,7 +63,7 @@ h1 {
     font-weight: 400;
 }
 
-.photographer_section article .description {
+.photographer_section article .tagline {
     font-size: 10px;
     font-weight: 400;
 }
