@@ -1,21 +1,22 @@
 import Api from "../api/api.js";
+import PhotographerHeader from "../templates/photographerHeader.js";
 import Photographer from "../models/Photographer.js";
-import PhotographerCard from "../templates/index-photographer.js";
 
 const photographersApi = new Api("./data/photographers.json");
-const photographersSection = document.querySelector(".photographer_section");
+const photographerId = new URLSearchParams(window.location.search).get("id");
 
-const displayPhotographers = async () => {
-  const photographersData = await photographersApi.get();
-  const photographers = photographersData.photographers;
-
-  photographers
-    .map((photographer) => new Photographer(photographer))
-    .forEach((photographer) => {
-      const template = new PhotographerCard(photographer);
-      const photographerCard = template.createPhotographerCard();
-      photographersSection.appendChild(photographerCard);
-    });
+export const getPhotographerById = async () => {
+    const { photographers} = await photographersApi.get();
+    const photographer = photographers
+        .map(photographer => new Photographer(photographer))
+        .find(photographer => photographer.id == photographerId);
+    return { photographer};
 };
 
-displayPhotographers();
+const displayProfilePage = async () => {
+    const { photographer} = await getPhotographerById();
+    const headerTemplate = new PhotographerHeader(photographer);
+    headerTemplate.createPhotographerHeader();
+};
+
+displayProfilePage();

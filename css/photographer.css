@@ -10,12 +10,16 @@
     justify-content: space-between;
 }
 
-.photograp-header .container {
+.photograph-header .name {
+    color: #D3573C;
+}
+
+.photograph-header .container {
     display: flex;
     flex-direction: column;
 }
 
-.photograp-header .container img {
+.photograph-header .container img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
