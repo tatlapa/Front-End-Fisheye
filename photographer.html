@@ -12,6 +12,7 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
+    <div class="page">
     <header>
       <a href="./index.html">
         <img
@@ -22,11 +23,32 @@
       </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
+      <section class="photograph-header"></section>
+        <div class="filter_section">
+          <h2>Trier par</h2>
+          <div class="filter" >
+              <div class="dropdown">
+                  <button class="btn_drop" type="button" role="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="filter options" aria-label="Sort by">
+                      <span id="current_filter">Titre</span>
+                      <span class="fa-solid fa-chevron-up" aria-hidden="true"></span>
+                  </button>
+
+                  <ul class="dropdown_content" aria-hidden="true">
+                      <li role="option">
+                          <button type="button" tabindex="-1" aria-label="Sort by title">Titre</button>
+                      </li>
+                      <li role="option">
+                          <button type="button" tabindex="-1" aria-label="Sort by popularity">Popularité</button>
+                      </li>
+                      <li role="option">
+                          <button type="button" tabindex="-1" aria-label="Sort by date">Date</button>
+                      </li>
+                  </ul>
+              </div>
+          </div>
       </div>
+      </section>
+      <section class="photograph-media"></section>
     </main>
     <div id="contact_modal">
       <div class="modal">
@@ -43,6 +65,8 @@
         </form>
       </div>
     </div>
-    <script src="./scripts/pages/photographer.js" type="module"></script>
+    <script src="/scripts/pages/photographer.js" type="module"></script>
+    <script src="/scripts/utils/contactForm.js"></script>
+  </div>
   </body>
 </html>
