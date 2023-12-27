@@ -204,9 +204,6 @@ h2 {
     background-color: #DB8876;
     border-color: transparent;
     font-size: 32px;
-}
-
-.fa-xmark {
     cursor: pointer;
 }
 
@@ -268,7 +265,7 @@ h2 {
 
 .lightBox_container {
     object-fit: cover;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -306,6 +303,7 @@ h2 {
     position: absolute;
     top: 35px;
     right: 5px;
+    cursor: pointer;
 }
 
 .btn_lightBox_previous {
