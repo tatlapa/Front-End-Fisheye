@@ -55,11 +55,13 @@
       </section>
       <section class="photograph-media"></section>
     </main>
+
+    <!-- Modal Form -->
     <div class="modal_wrapper wrapper" aria-modal="true" role="dialog">
       <div class="modal_form" aria-describedby="formTitle">
           <div class="modal_form_title">
               <h2 id="formTitle">Contactez-moi 
-                <button class="btn_close" type="button" aria-label="Close contact form"><i class="fa-solid fa-xmark"></i></button>
+                <button class="btn_form_close" type="button" aria-label="Close contact form"><i class="fa-solid fa-xmark"></i></button>
               </h2>
               <p class="modal_form_name"></p>
           </div> 
@@ -87,8 +89,26 @@
               <button class="btn btn_submit" type="submit" aria-label="Send">Envoyer</button>
           </form>
       </div>
+    </div>
+
+    <!-- LightBox -->
+    <div class="lightBox_container">
+      <div class="lightBox_content">
+        <img src="./assets/media/Ellie-Rose Wilkens/Architecture_Connected_Curves.jpg" class="img-test"></img>
+          <button class="btn_lightBox_close" type="button" aria-label="Close lightBox"><i class="fa-solid fa-xmark"></i></button>
+          <button class="btn_lightBox_previous" type="button" aria-label="Previous content"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="btn_lightBox_next" type="button" aria-label="Next content"><i class="fa-solid fa-chevron-right"></i></button>
+          <p class="content_name">Content Name</p>
+      </div>
   </div>
+
   </div>
+    
+
+
+
+
+
   <script src="/scripts/pages/photographer.js" type="module"></script>
   </body>
 </html>

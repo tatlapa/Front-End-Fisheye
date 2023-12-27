@@ -194,7 +194,7 @@ h2 {
 }
 
 
-.btn_close {
+.btn_form_close {
     content: "";
     font-family: "Font Awesome 5 Free";
     padding: 5px;
@@ -264,6 +264,78 @@ h2 {
 .btn_submit:hover,
 .btn_submit:focus {
     outline: 2px solid #fff;
+}
+
+.lightBox_container {
+    object-fit: cover;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.lightBox_content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    height: 90%;
+    max-height: 1000px;
+    background-color: #fff;
+    padding: 50px 60px 50px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(-150px);
+    animation: fadeIn .3s ease-in-out forwards;
+}
+
+
+.btn_lightBox_close {
+    background-color: #fff;
+    color: #901C1C;
+    border-color: transparent;
+    font-size: 52px;
+    z-index: 40;
+    position: absolute;
+    top: 35px;
+    right: 5px;
+}
+
+.btn_lightBox_previous {
+    color: #901C1C;
+    background-color: #fff;
+    border-color: transparent;
+    font-size: 32px;
+    z-index: 40;
+    position: absolute;
+    left: 5px;
+    cursor: pointer;
+}
+
+.btn_lightBox_next {
+    background-color: #fff;
+    font-size: 32px;
+    color: #901C1C;
+    border-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+}
+
+.content_name {
+    color: #901C1C;
+    font-size: 24px;
+    z-index: 40;
+    position: absolute;
+    bottom: 10px;
+    left: 60px;
 }
 
 @keyframes fadeIn {
