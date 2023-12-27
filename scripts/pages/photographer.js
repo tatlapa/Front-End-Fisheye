@@ -4,6 +4,7 @@ import Photographer from "../models/Photographer.js"; // Import du modèle de ph
 import PhotographerMedia from "../templates/photographerMedia.js"; // Import du template des médias du photographe
 import Media from "../models/Media.js"; // Import du modèle de média
 import FactoryMedia from "../factory/factoryMedia.js"; // Import du factory pour les médias
+import { openCloseFormContact, validateForm } from "../utils/contactForm.js";
 
 const photographersApi = new Api("./data/photographers.json"); // Initialisation de l'API des photographes
 const photographerId = new URLSearchParams(window.location.search).get("id"); // Récupération de l'ID du photographe depuis l'URL
@@ -19,7 +20,7 @@ const getPhotographerById = async () => {
     .map((media) => new FactoryMedia(media)) // Création des instances des médias
     .filter((media) => media.photographerId == photographerId); // Filtrage des médias par l'ID du photographe
 
-  return { photographer, medias }; // Retourne le photographe et ses médias correspondants
+  return { photographer, medias }; // Retourne le photographe et les médias
 };
 
 const displayProfilePage = async () => {
@@ -30,6 +31,9 @@ const displayProfilePage = async () => {
 
   const mediasTemplate = new PhotographerMedia(photographer, medias); // Affichage des médias du photographe
   mediasTemplate.createPhotographerMedia(); // Appel de la méthode pour créer les médias du photographe
+
+  openCloseFormContact();
+  validateForm();
 };
 
 displayProfilePage(); // Appel initial pour afficher la page

@@ -1,5 +1,5 @@
-#contact_modal {
-    display: none;
+main {
+    padding: 0 120px;
 }
 
 .photograph-header {
@@ -44,33 +44,6 @@
     color: #000000;
 }
 
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
-
 form {
     display: flex;
     width: 100%;
@@ -101,6 +74,7 @@ form input {
 .filter_section {
     display: flex;
     gap: 25px;
+    margin-top: 30px;
 }
 
 .btn_drop, 
@@ -132,13 +106,12 @@ li {
 }
 
 .dropdown_content li::before {
-    content: "";
     position: absolute;
     top: 0px;
     left: 50%;
     width: 85%;
     height: 1px;
-    background-color: blueviolet;
+    background-color: white;
 }
 
 .photograph-media {
@@ -152,7 +125,6 @@ li {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    height: 260px;
 }
 
 
@@ -165,3 +137,136 @@ img, video {
     will-change: transform;
 }
 
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery-media a {
+    height: 260px;
+}
+
+h2 {
+    color: #901C1C;
+}
+
+.btn_like {
+    background-color: white;
+    border-color: transparent;
+}
+
+.fa-heart {
+    background-clip: text;
+    color: #901C1C;
+}
+
+/* MODAL FORM */
+.modal_form {
+    position: relative;
+    border-radius: 5px;
+    background-color: #DB8876;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(-150px);
+    animation: fadeIn .3s ease-in-out forwards;
+}
+
+.modal_form_title{
+    width: 100%;
+    font-size: 32px;
+}
+
+.modal_form_title h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: normal;
+    font-size: 32px;
+}
+
+.btn_close:hover::before{
+    color: #DB8876;
+}
+.btn_close:focus:not(:hover)::before{
+    outline: 2px solid #DB8876;
+}
+
+.btn_close::before{
+    content: "\f00d";
+    font-family: "Font Awesome 5 Free";
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #fff;
+    background-color: #DB8876;
+    border-color: transparent;
+    font-size: 32px;
+}
+
+.modal_form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.form_content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form_content label {
+    color: #312E2E;
+    font-size: 28px;
+}
+
+.form_content input {
+    height: 50px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.form_content textarea {
+    border-radius: 5px;
+    height: 150px;
+    resize: none;
+    padding: 10px;
+}
+
+.form_content span{
+    color: #000;
+    font-size: 28px;
+}
+
+.form_content input:invalid:focus,
+.form_content textarea:invalid:focus {
+    outline: 2px solid #901C1C;
+} 
+
+.btn_submit{
+    max-width: 150px;
+    color: #fff;
+    text-align: center;
+}
+
+.btn_submit:hover,
+.btn_submit:focus {
+    outline: 2px solid #fff;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

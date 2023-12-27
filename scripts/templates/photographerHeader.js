@@ -8,7 +8,7 @@ export default function PhotographerHeader(photographer) {
           <p class="location">${photographer.city}, ${photographer.country}</p>
           <p class="tagline">${photographer.tagline}</p>    
         </div>
-        <button class="contact_button" onclick="displayModal()" type="button" aria-label="Open contact form">Contactez-moi</button>
+        <button class="btn contact_button" type="button" aria-label="Open contact form">Contactez-moi</button>
         <img src="./assets/photographers/${photographer.portrait}" alt="${photographer.name}">
       `;
       profilePageHeader.innerHTML = about;
