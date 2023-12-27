@@ -17,7 +17,6 @@ export default function PhotographerMedia(photographer, medias) {
               Your browser does not support the video tag.
           </video>
         `
-
         mediaHTML += `
         <div class="gallery-media">
         <a href="#">
@@ -32,16 +31,13 @@ export default function PhotographerMedia(photographer, medias) {
             </button>
           </div>
         </div>
-        
       </div>
-      
-        `;
+      `;
       });
       
       mediaPhotographer.innerHTML = mediaHTML;
       return mediaHTML;
     }
-  };
-  
+  }; 
   return photographerObj;
 }

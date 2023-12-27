@@ -190,17 +190,12 @@ h2 {
     align-items: center;
     font-weight: normal;
     font-size: 32px;
+    color: #000;
 }
 
-.btn_close:hover::before{
-    color: #DB8876;
-}
-.btn_close:focus:not(:hover)::before{
-    outline: 2px solid #DB8876;
-}
 
-.btn_close::before{
-    content: "\f00d";
+.btn_close {
+    content: "";
     font-family: "Font Awesome 5 Free";
     padding: 5px;
     border-radius: 5px;
@@ -209,6 +204,10 @@ h2 {
     background-color: #DB8876;
     border-color: transparent;
     font-size: 32px;
+}
+
+.fa-xmark {
+    cursor: pointer;
 }
 
 .modal_form form {
@@ -241,11 +240,12 @@ h2 {
     height: 150px;
     resize: none;
     padding: 10px;
+    width: 100%;
 }
 
 .form_content span{
     color: #000;
-    font-size: 28px;
+    font-size: 15px;
 }
 
 .form_content input:invalid:focus,
@@ -257,6 +257,8 @@ h2 {
     max-width: 150px;
     color: #fff;
     text-align: center;
+    border-color: transparent;
+    font-family: DM Sans;
 }
 
 .btn_submit:hover,

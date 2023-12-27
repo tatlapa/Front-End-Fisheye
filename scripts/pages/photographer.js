@@ -32,7 +32,7 @@ const displayProfilePage = async () => {
   const mediasTemplate = new PhotographerMedia(photographer, medias); // Affichage des médias du photographe
   mediasTemplate.createPhotographerMedia(); // Appel de la méthode pour créer les médias du photographe
 
-  openCloseFormContact();
+  openCloseFormContact(photographer);
   validateForm();
 };
 
