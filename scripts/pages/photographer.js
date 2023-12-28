@@ -2,7 +2,6 @@ import Api from "../api/api.js"; // Import du module API
 import PhotographerHeader from "../templates/photographerHeader.js"; // Import du template de l'en-tête du photographe
 import Photographer from "../models/Photographer.js"; // Import du modèle de photographe
 import PhotographerMedia from "../templates/photographerMedia.js"; // Import du template des médias du photographe
-import Media from "../models/Media.js"; // Import du modèle de média
 import FactoryMedia from "../factory/factoryMedia.js"; // Import du factory pour les médias
 import { openCloseFormContact, validateForm } from "../utils/contactForm.js";
 import {displayLightBox} from "../utils/lightBox.js";
@@ -35,7 +34,7 @@ const displayProfilePage = async () => {
 
   openCloseFormContact(photographer);
   validateForm();
-  displayLightBox();
+  displayLightBox(medias, photographer);
 };
 
 displayProfilePage(); // Appel initial pour afficher la page

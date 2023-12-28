@@ -1,9 +1,8 @@
-export const openCloseFormContact = (photographer) => {
+export const openCloseFormContact = photographer => {
     const contactBtn = document.querySelector(".contact_button");
     const contactModal = document.querySelector(".modal_wrapper");
     const closeModal = document.querySelector(".btn_form_close");
     const formName = document.querySelector(".modal_form_name");
-
 
     contactBtn.addEventListener("click", () => {
         contactModal.style.display = "flex";

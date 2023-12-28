@@ -10,23 +10,23 @@ export default function PhotographerMedia(photographer, medias) {
 
         const mediaElement = media.image 
         ? 
-        `<img src="./assets/media/${photographer.name}/${media.image}" alt="${media.title}">`
+        `<img src="./assets/media/${photographer.name}/${media.image}" class="lightbox-trigger" alt="${media.title}">`
         :
-        `<video controls>
+        `<video controls class="lightbox-trigger">
               <source src="./assets/media/${photographer.name}/${media.video}" type="video/mp4">
               Your browser does not support the video tag.
           </video>
         `
         mediaHTML += `
         <div class="gallery-media">
-        <a href="#">
+        <a href="#" class="open-light-box">
         ${mediaElement}
         </a>
         <div class="info-container">
           <h2>${media.title}</h2>
           <div class="like-container">
             <span class="like">${media.likes}</span>
-            <button class="btn_like" type="button" aria-label="Like" data-id="${media.id}">
+            <button class="btn_like" type="button" aria-label="Like"">
               <span class="fas fa-heart" aria-hidden="true"></span>
             </button>
           </div>
