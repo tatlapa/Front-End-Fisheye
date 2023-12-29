@@ -341,6 +341,39 @@ figcaption {
     font-size: 24px;
 }
 
+.like_container {
+    position: sticky; 
+    position: fixed; 
+    bottom: 0;
+    right: 20px;
+    background-color: #DB8876;
+    padding: 10px;
+    align-items: center;
+    display: flex; /* Utilisation de display flex */
+    justify-content: space-around; /* Alignement à droite */
+    max-width: 300px; /* Limite de la largeur */
+}
+
+.like {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.nb_like {
+    font-size: 24px;
+}
+
+.dark-heart {
+    background-clip: text;
+    color: #000;
+}
+
+.price {
+    margin-left: 20px;
+}
+
+
 @keyframes fadeIn {
     to {
         opacity: 1;
