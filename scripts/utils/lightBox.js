@@ -20,10 +20,10 @@ export const displayLightBox = (medias, photographer) => {
     btnClose.addEventListener("click", () => {
         lightBoxContainer.style.display = "none";
     });
-};
 
-// Fonction pour afficher le média correspondant à l'index donné
-const displayCurrentMedia = (index, medias, photographer) => {
+
+    // Fonction pour afficher le média correspondant à l'index donné
+    const displayCurrentMedia = (index, medias, photographer) => {
     const lightBoxMedia = document.querySelector('.lightBox_media');
     const currentMedia = medias[index]; // Récupère le média correspondant à l'index
     
@@ -46,4 +46,26 @@ const displayCurrentMedia = (index, medias, photographer) => {
         videoElement.innerHTML = "Your browser does not support the video tag.";
         lightBoxMedia.appendChild(videoElement);
     }
+
+    const caption = document.createElement('figcaption');
+    caption.innerHTML = `${currentMedia.title}`;
+    lightBoxMedia.appendChild(caption);
+
+    };
+
+
+    //slider 
+
+    const lightBoxPreviousBtn = document.querySelector(".btn_lightBox_previous");
+    const lightBoxNextBtn = document.querySelector(".btn_lightBox_next");
+
+    lightBoxPreviousBtn.addEventListener("click", () => {
+        currentMediaIndex = (currentMediaIndex - 1 + medias.length) % medias.length;
+        displayCurrentMedia(currentMediaIndex, medias, photographer);
+    });
+
+    lightBoxNextBtn.addEventListener("click", () => {
+        currentMediaIndex = (currentMediaIndex + 1) % medias.length;
+        displayCurrentMedia(currentMediaIndex, medias, photographer);
+    });
 };
