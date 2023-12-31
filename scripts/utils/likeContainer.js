@@ -1,26 +1,29 @@
 export const displayNumberOfLike = (medias) => {
-  const nbOfLike = document.querySelector(".nb_like");
-  let countNbOfLike = medias.reduce((acc, media) => acc + media.likes, 0);
-  nbOfLike.innerHTML = `${countNbOfLike}`;
+  let totalLikes = medias.reduce((acc, media) => acc + media.likes, 0);
+  const nbOfLikeTotal = document.querySelector(".nb_like");
+  nbOfLikeTotal.innerHTML = totalLikes;
 
-  const mediaStates = medias.map(() => ({
-    isLiked: false,
-  }));
+  const nbOfLikeElements = document.querySelectorAll(".like");
 
   const btnLikes = document.querySelectorAll(".btn_like");
   btnLikes.forEach((btnLike, index) => {
-    btnLike.addEventListener("click", () => {
-      mediaStates[index].isLiked = !mediaStates[index].isLiked;
+    let countNbOfLike = medias[index].likes;
 
-      if (mediaStates[index].isLiked) {
-        btnLike.classList.add("btn_liked");
-        countNbOfLike++;
-      } else {
-        btnLike.classList.remove("btn_liked");
+    btnLike.addEventListener("click", () => {
+      const isLiked = btnLike.classList.contains("btn_liked");
+
+      if (isLiked) {
         countNbOfLike--;
+        btnLike.classList.remove("btn_liked");
+        totalLikes--;
+      } else {
+        countNbOfLike++;
+        btnLike.classList.add("btn_liked");
+        totalLikes++;
       }
 
-      nbOfLike.innerHTML = countNbOfLike;
+      nbOfLikeElements[index].innerHTML = countNbOfLike;
+      nbOfLikeTotal.innerHTML = totalLikes;
     });
   });
 };
