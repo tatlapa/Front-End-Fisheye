@@ -5,6 +5,7 @@ import PhotographerMedia from "../templates/photographerMedia.js"; // Import du 
 import FactoryMedia from "../factory/factoryMedia.js"; // Import du factory pour les médias
 import { openCloseFormContact, validateForm } from "../utils/contactForm.js";
 import {displayLightBox} from "../utils/lightBox.js";
+import { displayNumberOfLike } from "../utils/likeContainer.js";
 
 const photographersApi = new Api("./data/photographers.json"); // Initialisation de l'API des photographes
 const photographerId = new URLSearchParams(window.location.search).get("id"); // Récupération de l'ID du photographe depuis l'URL
@@ -35,6 +36,7 @@ const displayProfilePage = async () => {
   openCloseFormContact(photographer);
   validateForm();
   displayLightBox(medias, photographer);
+  displayNumberOfLike(medias);
 };
 
 displayProfilePage(); // Appel initial pour afficher la page

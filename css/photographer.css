@@ -151,14 +151,26 @@ h2 {
     color: #901C1C;
 }
 
+.like-container {
+    display: flex;
+    gap: 3px;
+    font-size: 24px;
+}
+
 .btn_like {
     background-color: white;
     border-color: transparent;
+    cursor: pointer;
+    color: #DB8876;
+}
+
+.btn_liked {
+    color: #901C1C;
 }
 
 .fa-heart {
     background-clip: text;
-    color: #901C1C;
+    font-size: 24px;
 }
 
 /* MODAL FORM */
@@ -345,7 +357,7 @@ figcaption {
     position: sticky; 
     position: fixed; 
     bottom: 0;
-    right: 20px;
+    right: 50px;
     background-color: #DB8876;
     padding: 10px;
     align-items: center;
