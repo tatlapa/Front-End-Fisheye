@@ -75,6 +75,15 @@ form input {
     display: flex;
     gap: 25px;
     margin-top: 30px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.dropdown_content {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    z-index: 999;
 }
 
 .btn_drop, 
@@ -91,6 +100,13 @@ form input {
     padding: 15px;
     align-items: center;
     width: 100%;
+    cursor: pointer;
+}
+
+.btn_drop:hover, 
+.dropdown_content li button:hover {
+    background-color: #DB8876;
+    color: black;
 }
 
 .btn_drop{
@@ -173,6 +189,20 @@ h2 {
     font-size: 24px;
 }
 
+.wrapper{
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
 /* MODAL FORM */
 .modal_form {
     position: relative;
@@ -217,6 +247,10 @@ h2 {
     border-color: transparent;
     font-size: 32px;
     cursor: pointer;
+}
+
+.btn_form_close:hover {
+    color: #901C1C;
 }
 
 .modal_form form {
@@ -268,6 +302,9 @@ h2 {
     text-align: center;
     border-color: transparent;
     font-family: DM Sans;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 .btn_submit:hover,
@@ -286,6 +323,7 @@ h2 {
     width: 100%;
     height: 100vh;
     background-color: rgba(0,0,0,0.5);
+    z-index: 999;
 }
 
 .lightBox_content {
@@ -318,6 +356,10 @@ h2 {
     cursor: pointer;
 }
 
+.btn_lightBox_close:hover {
+    color: #DB8876;
+}
+
 .btn_lightBox_previous {
     color: #901C1C;
     background-color: #fff;
@@ -329,6 +371,10 @@ h2 {
     cursor: pointer;
 }
 
+.btn_lightBox_previous:hover {
+    color: #DB8876;
+}
+
 .btn_lightBox_next {
     background-color: #fff;
     font-size: 32px;
@@ -337,6 +383,10 @@ h2 {
     cursor: pointer;
     position: absolute;
     right: 5px;
+}
+
+.btn_lightBox_next:hover {
+    color: #DB8876;
 }
 
 
@@ -354,7 +404,6 @@ figcaption {
 }
 
 .like_container {
-    position: sticky; 
     position: fixed; 
     bottom: 0;
     right: 50px;
@@ -364,6 +413,7 @@ figcaption {
     display: flex; /* Utilisation de display flex */
     justify-content: space-around; /* Alignement à droite */
     max-width: 300px; /* Limite de la largeur */
+    z-index: 50;
 }
 
 .like {
@@ -383,6 +433,7 @@ figcaption {
 
 .price {
     margin-left: 20px;
+    font-size: 24px;
 }
 
 
