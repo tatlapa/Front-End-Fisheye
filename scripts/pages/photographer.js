@@ -4,9 +4,9 @@ import Photographer from "../models/Photographer.js"; // Import du modèle de ph
 import PhotographerMedia from "../templates/photographerMedia.js"; // Import du template des médias du photographe
 import FactoryMedia from "../factory/factoryMedia.js"; // Import du factory pour les médias
 import { openCloseFormContact, validateForm } from "../utils/contactForm.js";
-import {displayLightBox} from "../utils/lightBox.js";
+import { displayLightBox } from "../utils/lightBox.js";
 import { displayNumberOfLike } from "../utils/likeContainer.js";
-import { displayFilter } from "../utils/filter.js";
+import { movementFilter,displayMediaFilter } from "../utils/filter.js";
 
 const photographersApi = new Api("./data/photographers.json"); // Initialisation de l'API des photographes
 const photographerId = new URLSearchParams(window.location.search).get("id"); // Récupération de l'ID du photographe depuis l'URL
@@ -38,7 +38,8 @@ const displayProfilePage = async () => {
   validateForm();
   displayLightBox(medias, photographer);
   displayNumberOfLike(medias);
-  displayFilter();
+  movementFilter();
+  displayMediaFilter(mediasTemplate);
 };
 
 displayProfilePage(); // Appel initial pour afficher la page

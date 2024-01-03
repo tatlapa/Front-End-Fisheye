@@ -24,6 +24,7 @@ export const displayNumberOfLike = (medias) => {
 
       nbOfLikeElements[index].innerHTML = countNbOfLike;
       nbOfLikeTotal.innerHTML = totalLikes;
+
     });
   });
 };

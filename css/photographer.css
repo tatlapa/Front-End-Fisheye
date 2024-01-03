@@ -79,8 +79,12 @@ form input {
     margin-bottom: 50px;
 }
 
+.dropdown {
+    position: relative;
+}
+
 .dropdown_content {
-    position: fixed;
+    position: absolute;
     display: none;
     flex-direction: column;
     z-index: 999;
@@ -434,6 +438,18 @@ figcaption {
 .price {
     margin-left: 20px;
     font-size: 24px;
+}
+
+.animeCard{
+    animation: fade .2s ease-in-out;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    } to{
+        opacity: 1;
+    }   
 }
 
 
