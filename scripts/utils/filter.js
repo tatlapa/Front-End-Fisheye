@@ -17,8 +17,8 @@ btnDropDown.addEventListener("click", () => {
         isOpen=true;
     }
 });
-
 };
+
 
 export const displayMediaFilter = mediasTemplate => {
     const currentFilter = document.querySelector('#current_filter');

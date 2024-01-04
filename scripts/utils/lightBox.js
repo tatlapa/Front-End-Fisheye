@@ -27,7 +27,7 @@ export const displayLightBox = (medias, photographer) => {
         const lightBoxMedia = document.querySelector('.lightBox_media');
         const currentMedia = medias[index]; // Récupère le média correspondant à l'index
     
-        // Vérifie si currentMedia est défini et s'il a la propriété 'image'
+        // Vérifie si currentMedia est défini
         if (currentMedia && currentMedia.image || currentMedia.video) {
             // Nettoie le contenu précédent de la lightbox
             while (lightBoxMedia.firstChild) {
@@ -43,6 +43,7 @@ export const displayLightBox = (medias, photographer) => {
             } else if (currentMedia.video) {
                 const videoElement = document.createElement('video');
                 videoElement.src = `./assets/media/${photographer.name}/${currentMedia.video}`;
+                videoElement.alt = currentMedia.title;
                 videoElement.setAttribute('controls', true);
                 videoElement.setAttribute('type', 'video/mp4');
                 videoElement.innerHTML = "Your browser does not support the video tag.";
@@ -54,8 +55,6 @@ export const displayLightBox = (medias, photographer) => {
             lightBoxMedia.appendChild(caption);
         }
     };
-    
-
 
     //slider 
 
@@ -71,4 +70,5 @@ export const displayLightBox = (medias, photographer) => {
         currentMediaIndex = (currentMediaIndex + 1) % medias.length;
         displayCurrentMedia(currentMediaIndex, medias, photographer);
     });
+
 };

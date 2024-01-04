@@ -414,9 +414,9 @@ figcaption {
     background-color: #DB8876;
     padding: 10px;
     align-items: center;
-    display: flex; /* Utilisation de display flex */
-    justify-content: space-around; /* Alignement à droite */
-    max-width: 300px; /* Limite de la largeur */
+    display: flex; 
+    justify-content: space-around;
+    max-width: 300px; 
     z-index: 50;
 }
 
@@ -458,4 +458,22 @@ figcaption {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .photograph-media {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 767.98px) {
+
+    main {
+        padding: 0;
+    }
+
+    .photograph-media {
+        grid-template-columns: 1fr;
+    }
+
 }
