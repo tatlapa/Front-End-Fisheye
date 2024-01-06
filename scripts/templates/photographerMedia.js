@@ -12,7 +12,7 @@ export default function PhotographerMedia(photographer, medias) {
         ? 
         `<img src="./assets/media/${photographer.name}/${media.image}" class="lightbox-trigger" alt="${media.title}">`
         :
-        `<video controls class="lightbox-trigger">
+        `<video class="lightbox-trigger">
               <source src="./assets/media/${photographer.name}/${media.video}" type="video/mp4">
               Your browser does not support the video tag.
           </video>
