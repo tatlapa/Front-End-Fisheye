@@ -1,45 +1,53 @@
-import Api from "../api/api.js"; // Import du module API
-import PhotographerHeader from "../templates/photographerHeader.js"; // Import du template de l'en-tête du photographe
-import Photographer from "../models/Photographer.js"; // Import du modèle de photographe
-import PhotographerMedia from "../templates/photographerMedia.js"; // Import du template des médias du photographe
-import FactoryMedia from "../factory/factoryMedia.js"; // Import du factory pour les médias
-import { openCloseFormContact, validateForm } from "../utils/contactForm.js";
-import { displayLightBox } from "../utils/lightBox.js";
-import { displayNumberOfLike } from "../utils/likeContainer.js";
-import { movementFilter,displayMediaFilter } from "../utils/filter.js";
+import Api from "../api/api.js"; // Module gérant les requêtes API
+import PhotographerHeader from "../templates/photographerHeader.js"; // Template pour l'en-tête du photographe
+import Photographer from "../models/Photographer.js"; // Modèle de données pour un photographe
+import PhotographerMedia from "../templates/photographerMedia.js"; // Template pour les médias du photographe
+import FactoryMedia from "../factory/factoryMedia.js"; // Factory pour les médias
+import { openCloseFormContact, validateForm } from "../utils/contactForm.js"; // Fonctions pour le formulaire de contact
+import { displayLightBox } from "../utils/lightBox.js"; // Fonction pour afficher la lightbox
+import { displayNumberOfLike } from "../utils/likeContainer.js"; // Fonction pour afficher le nombre de "likes"
+import { movementFilter, displayMediaFilter } from "../utils/filter.js"; // Fonctions pour les filtres
 
-const photographersApi = new Api("./data/photographers.json"); // Initialisation de l'API des photographes
-const photographerId = new URLSearchParams(window.location.search).get("id"); // Récupération de l'ID du photographe depuis l'URL
+// Crée une nouvelle instance de l'API pour les photographes en utilisant le fichier photographers.json
+const photographersApi =  Api("./data/photographers.json");
 
+// Récupère l'ID du photographe depuis l'URL actuelle
+const photographerId = new URLSearchParams(window.location.search).get("id");
+
+// Fonction asynchrone pour obtenir les données du photographe en fonction de son ID
 const getPhotographerById = async () => {
-  const { photographers, media } = await photographersApi.get(); // Récupération des données des photographes et des médias depuis l'API
+  const { photographers, media } = await photographersApi.get(); // Récupère les données des photographes et des médias depuis l'API
 
+  // Recherche le photographe correspondant à l'ID spécifié dans l'URL
   const photographer = photographers
-    .map((photographer) => new Photographer(photographer)) // Création des instances des photographes
+    .map((photographer) => Photographer(photographer)) // Crée des instances des photographes
     .find((photographer) => photographer.id == photographerId); // Recherche du photographe par son ID
 
+  // Filtrage des médias pour obtenir ceux liés au photographe spécifique via son ID
   const medias = media
-    .map((media) => new FactoryMedia(media)) // Création des instances des médias
+    .map((media) => FactoryMedia(media)) // Crée des instances des médias
     .filter((media) => media.photographerId == photographerId); // Filtrage des médias par l'ID du photographe
 
-  return { photographer, medias }; // Retourne le photographe et les médias
+  return { photographer, medias }; // Retourne le photographe et ses médias
 };
 
+// Fonction pour afficher la page de profil du photographe
 const displayProfilePage = async () => {
-  const { photographer, medias } = await getPhotographerById(); // Récupération des données du photographe et de ses médias via la fonction asynchrone
+  const { photographer, medias } = await getPhotographerById(); // Récupère les données du photographe et de ses médias via la fonction asynchrone
 
-  const headerTemplate = new PhotographerHeader(photographer); // Création de l'en-tête du photographe
-  headerTemplate.createPhotographerHeader(); // Appel de la méthode pour créer l'en-tête du photographe
+  const headerTemplate = PhotographerHeader(photographer); 
+  headerTemplate.createPhotographerHeader(); 
 
-  const mediasTemplate = new PhotographerMedia(photographer, medias); // Affichage des médias du photographe
-  mediasTemplate.createPhotographerMedia(); // Appel de la méthode pour créer les médias du photographe
+  const mediasTemplate = PhotographerMedia(photographer, medias); 
+  mediasTemplate.createPhotographerMedia(); 
 
-  openCloseFormContact(photographer);
-  validateForm();
-  displayLightBox(medias, photographer);
-  displayNumberOfLike(medias);
-  movementFilter();
-  displayMediaFilter(mediasTemplate);
+  // Appels aux différentes fonctions/utilitaires pour gérer des fonctionnalités spécifiques
+  openCloseFormContact(photographer); 
+  validateForm(); 
+  displayLightBox(medias, photographer); 
+  displayNumberOfLike(medias); 
+  movementFilter(); 
+  displayMediaFilter(mediasTemplate); 
 };
 
-displayProfilePage(); // Appel initial pour afficher la page
+displayProfilePage(); 
