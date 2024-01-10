@@ -17,6 +17,7 @@ export const displayLightBox = (medias, photographer) => {
     const displayCurrentMedia = (index, medias, photographer) => {
         const lightBoxMedia = document.querySelector('.lightBox_media'); // Sélectionne l'élément où afficher les médias
         const currentMedia = medias[index]; // Récupère le média actuel en fonction de l'index
+        console.log(medias[index])
 
         if (currentMedia && (currentMedia.image || currentMedia.video)) {
             while (lightBoxMedia.firstChild) {

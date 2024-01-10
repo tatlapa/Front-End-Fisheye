@@ -24,7 +24,6 @@ btnDropDown.addEventListener("click", () => {
 export const displayMediaFilter = mediasTemplate => {
     const currentFilter = document.querySelector('#current_filter'); 
     const allFilters = Array.from(document.querySelectorAll('.dropdown_content li button')); 
-    console.log(allFilters)
 
     let filterAlreadySelected = allFilters.find(filter => filter.textContent == currentFilter.textContent); // Recherche du filtre actuel parmi tous les filtres disponibles
     if (filterAlreadySelected) {
@@ -44,7 +43,7 @@ export const displayMediaFilter = mediasTemplate => {
             sortByFilter(filter.textContent); // Appelle la fonction de tri en fonction du texte du filtre sélectionné
         });
     });
-
+    
     const sortByFilter = filterValue => {
         switch (filterValue) {
             case 'Titre':
@@ -60,20 +59,16 @@ export const displayMediaFilter = mediasTemplate => {
     
         mediasTemplate.createPhotographerMedia();
         const mediasfiltered = mediasTemplate;
+        console.log(mediasfiltered)
         displayLightBox(mediasfiltered);
+
+
         // Ajoutez une vérification avant d'appeler displayNumberOfLike
         if (mediasfiltered.medias && mediasfiltered.medias.length > 0) {
             displayNumberOfLike(mediasfiltered.medias);
         } else {
             console.error("Les données medias sont absentes ou vides.");
         }
- 
-        const mediaElements = document.querySelectorAll('.gallery_card');
-        mediaElements.forEach((media, index) => {
-            setTimeout(() => {
-                media.classList.add('animeCard');
-            }, 100 * index);
-        });   
     };
 }
     

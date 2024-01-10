@@ -27,8 +27,8 @@ const getPhotographerById = async () => {
   const medias = media
     .map((media) => FactoryMedia(media)) // Crée des instances des médias
     .filter((media) => media.photographerId == photographerId); // Filtrage des médias par l'ID du photographe
-
   return { photographer, medias }; // Retourne le photographe et ses médias
+
 };
 
 // Fonction pour afficher la page de profil du photographe

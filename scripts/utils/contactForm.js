@@ -8,16 +8,14 @@ export const openCloseFormContact = photographer => {
     // Écouteur d'événements pour ouvrir le formulaire de contact lors du clic sur le bouton
     contactBtn.addEventListener("click", () => {
         contactModal.style.display = "flex";
-        formName.innerHTML = photographer.name; // Affichage du nom du photographe dans le formulaire
-        closeModal.focus(); // Met le focus sur le bouton de fermeture du formulaire
+        formName.innerHTML = photographer.name;
+        closeModal.focus();
     });
 
     // Écouteur d'événements pour fermer le formulaire de contact lors du clic sur le bouton de fermeture
     closeModal.addEventListener("click", () => contactModal.style.display = "none");
 };
 
-
-// Fonction pour valider les données saisies dans un formulaire
 export const validateForm = () => {
     const form = document.querySelector('.modal_form form'); 
     const firstName = document.querySelector("#firstname"); 
@@ -33,8 +31,10 @@ export const validateForm = () => {
         e.preventDefault(); // Empêche l'envoi du formulaire par défaut
 
         // Vérifie la validité du formulaire et affiche des messages personnalisés si nécessaire
-        if (!form.checkValidity()) displayCustomMessage();
-        else {
+        if (!form.checkValidity()) {
+            console.log("Le formulaire est invalide.");
+            displayCustomMessage();
+        } else {
             // Si le formulaire est valide, récupère les données et réinitialise le formulaire
             const formDatas = {
                 firstName: firstName.value,
@@ -42,9 +42,14 @@ export const validateForm = () => {
                 email: email.value,
                 message: message.value,
             };
+
+            // Affichage dans la console du contenu des champs du formulaire
+            console.log("Contenu des champs du formulaire :", formDatas);
+
+            // Réinitialisation des classes et du formulaire
             document.querySelectorAll('.formField').forEach(input => input.classList.remove('valid'));
             form.reset();
-        };
+        }
     });
 
     // Fonction pour vérifier la validité d'un champ selon une expression régulière
