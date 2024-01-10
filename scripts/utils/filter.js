@@ -72,4 +72,3 @@ export const displayMediaFilter = mediasTemplate => {
     };
 }
     
-

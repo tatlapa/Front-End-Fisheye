@@ -18,10 +18,10 @@ export default function PhotographerMedia(photographer, medias) {
           </video>
         `
         mediaHTML += `
-        <div class="gallery-media">
-        <a href="#" class="open-light-box">
+        <div class="gallery-media" data-id="${media.id}">
+        <div class="open-light-box" data-text="${media.title}" data-id="${media.id}">
         ${mediaElement}
-        </a>
+        </div>
         <div class="info-container">
           <h2>${media.title}</h2>
           <div class="like-container">
