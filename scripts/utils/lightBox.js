@@ -1,24 +1,28 @@
 export const displayLightBox = (medias, photographer) => {
+
     const lightBoxContainer = document.getElementById('lightbox'); 
     let currentMediaIndex = 0; 
-
+    console.log(medias)
     // Sélectionne tous les éléments pour ouvrir la lightbox
     const openLightBoxes = document.querySelectorAll('.open-light-box');
     openLightBoxes.forEach((openLightBox, index) => {
         openLightBox.addEventListener("click", (event) => {
-            const mediaUrl = event.currentTarget.querySelector('.lightbox-trigger'); 
+            let mediaUrl = event.currentTarget.querySelector('.lightbox-trigger');
             let mediaType = null;
+
             if (mediaUrl) {
                 if (mediaUrl.tagName.toLowerCase() === 'img') {
                   mediaType = "img";
                 }
                 else if (mediaUrl.tagName.toLowerCase() === 'video') {
+                    mediaUrl = event.currentTarget.querySelector('.lightbox-trigger source'); 
                     mediaType = "video";
                 }
             }
             const mediaText = openLightBox.dataset.text;
             lightBoxContainer.style.display = "flex"; // Affiche la lightbox
             currentMediaIndex = index; // Met à jour l'index du média actuel avec celui cliqué
+            console.log(currentMediaIndex)
             displayCurrentMedia(mediaType, mediaUrl.src, mediaText); // Affiche le média actuel
             const btnClose = document.querySelector(".btn_lightBox_close");
             btnClose.focus(); // Définit le focus sur le bouton de fermeture de la lightbox
@@ -33,17 +37,18 @@ export const displayLightBox = (medias, photographer) => {
                 lightBoxMedia.removeChild(lightBoxMedia.firstChild); // Vide le conteneur précédent du média
             }
             if (mediaType == "img") {
+             
                 const imageElement = document.createElement('img'); 
                 imageElement.src = mediaUrl; 
                 imageElement.alt = mediaText; 
                 lightBoxMedia.appendChild(imageElement); // Ajoute l'image à la lightbox
             } else if (mediaType == "video") {
-                const videoElement = document.createElement('video'); 
+             
+                const videoElement = document.createElement('video') 
                 videoElement.src = mediaUrl; 
                 videoElement.alt = mediaText; 
                 videoElement.setAttribute('controls', true); 
-                videoElement.setAttribute('type', 'video/mp4'); 
-                videoElement.innerHTML = "Your browser does not support the video tag."; 
+                videoElement.setAttribute('type', 'video/mp4');  
                 lightBoxMedia.appendChild(videoElement); // Ajoute la vidéo à la lightbox
             }
             const caption = document.createElement('figcaption'); 
@@ -57,16 +62,16 @@ export const displayLightBox = (medias, photographer) => {
     const lightBoxNextBtn = document.querySelector(".btn_lightBox_next");
 
     lightBoxPreviousBtn.addEventListener("click", () => {
-        const currentIndex = currentMediaIndex;
+
         currentMediaIndex = (currentMediaIndex - 1 + medias.length) % medias.length; // Met à jour l'index pour afficher le média précédent
+        console.log(currentMediaIndex)
         
-        if (medias[currentIndex]) {
+        if (medias[currentMediaIndex]) {
             const mediaType = medias[currentMediaIndex]?.image ? 'img' : 'video';
             const media = medias[currentMediaIndex]?.image ? medias[currentMediaIndex]?.image : medias[currentMediaIndex]?.video;
             const mediaText = medias[currentMediaIndex]?.title;
             const mediaUrl = `./assets/media/${photographer && photographer.name}/${media}`;
-            console.log(medias[currentMediaIndex]?.id);
-            const currentElementId = medias[currentIndex].id;
+            const currentElementId = medias[currentMediaIndex].id;
             const selector = `.gallery-media[data-id="${currentElementId}"]`;
             const currentElement = document.querySelector(selector);
             const previousOpenLightbox = findPreviousOpenLightbox(currentElement);
@@ -77,16 +82,16 @@ export const displayLightBox = (medias, photographer) => {
     
 
     lightBoxNextBtn.addEventListener("click", () => {
-        const currentIndex = currentMediaIndex;
+
         currentMediaIndex = (currentMediaIndex + 1) % medias.length; // Met à jour l'index pour afficher le média suivant
+        console.log(currentMediaIndex)
         
-        if (medias[currentIndex]) {
+        if (medias[currentMediaIndex]) {
             const mediaType = medias[currentMediaIndex]?.image ? 'img' : 'video';
             const media = medias[currentMediaIndex]?.image ? medias[currentMediaIndex]?.image : medias[currentMediaIndex]?.video;
             const mediaText = medias[currentMediaIndex]?.title;
             const mediaUrl = `./assets/media/${photographer && photographer.name}/${media}`;
-            console.log(medias[currentMediaIndex]?.id);
-            const currentElementId = medias[currentIndex].id;
+            const currentElementId = medias[currentMediaIndex].id;
             const selector = `.gallery-media[data-id="${currentElementId}"]`;
             const currentElement = document.querySelector(selector);
             const nextOpenLightbox = findNextOpenLightbox(currentElement);
