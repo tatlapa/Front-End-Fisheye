@@ -2,7 +2,7 @@ export const displayLightBox = (medias, photographer) => {
 
     const lightBoxContainer = document.getElementById('lightbox'); 
     let currentMediaIndex = 0; 
-    console.log(medias)
+
     // Sélectionne tous les éléments pour ouvrir la lightbox
     const openLightBoxes = document.querySelectorAll('.open-light-box');
     openLightBoxes.forEach((openLightBox, index) => {
@@ -22,7 +22,7 @@ export const displayLightBox = (medias, photographer) => {
             const mediaText = openLightBox.dataset.text;
             lightBoxContainer.style.display = "flex"; // Affiche la lightbox
             currentMediaIndex = index; // Met à jour l'index du média actuel avec celui cliqué
-            console.log(currentMediaIndex)
+
             displayCurrentMedia(mediaType, mediaUrl.src, mediaText); // Affiche le média actuel
             const btnClose = document.querySelector(".btn_lightBox_close");
             btnClose.focus(); // Définit le focus sur le bouton de fermeture de la lightbox
@@ -64,7 +64,7 @@ export const displayLightBox = (medias, photographer) => {
     lightBoxPreviousBtn.addEventListener("click", () => {
 
         currentMediaIndex = (currentMediaIndex - 1 + medias.length) % medias.length; // Met à jour l'index pour afficher le média précédent
-        console.log(currentMediaIndex)
+
         
         if (medias[currentMediaIndex]) {
             const mediaType = medias[currentMediaIndex]?.image ? 'img' : 'video';
@@ -75,7 +75,7 @@ export const displayLightBox = (medias, photographer) => {
             const selector = `.gallery-media[data-id="${currentElementId}"]`;
             const currentElement = document.querySelector(selector);
             const previousOpenLightbox = findPreviousOpenLightbox(currentElement);
-            console.log(previousOpenLightbox);
+
             displayCurrentMedia(mediaType, mediaUrl, mediaText); // Affiche le média précédent
         } 
     });
@@ -84,7 +84,7 @@ export const displayLightBox = (medias, photographer) => {
     lightBoxNextBtn.addEventListener("click", () => {
 
         currentMediaIndex = (currentMediaIndex + 1) % medias.length; // Met à jour l'index pour afficher le média suivant
-        console.log(currentMediaIndex)
+
         
         if (medias[currentMediaIndex]) {
             const mediaType = medias[currentMediaIndex]?.image ? 'img' : 'video';
@@ -95,7 +95,7 @@ export const displayLightBox = (medias, photographer) => {
             const selector = `.gallery-media[data-id="${currentElementId}"]`;
             const currentElement = document.querySelector(selector);
             const nextOpenLightbox = findNextOpenLightbox(currentElement);
-            console.log(nextOpenLightbox);
+
             displayCurrentMedia(mediaType, mediaUrl, mediaText); // Affiche le média suivant
         } 
     });
